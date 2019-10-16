@@ -4,18 +4,16 @@ function pdo_query($sql){
     $args = func_get_args();       //获得传入的所有参数的数组
     $args=array_slice($args,1,--$num_args);
     
-    global $DB_HOST,$DB_NAME,$DB_USER,$DB_PASS,$dbh,$OJ_SAE,$OJ_TEMPLATE,$test;
+    global $DB_HOST,$DB_NAME,$DB_USER,$DB_PASS,$dbh,$OJ_SAE,$OJ_TEMPLATE;
     try{
 	    if(!$dbh){
 				
 			if(isset($OJ_SAE)&&$OJ_SAE)	{
 				$OJ_DATA="saestor://data/";
 			//  for sae.sina.com.cn
-$test="1";
 				$DB_NAME=SAE_MYSQL_DB;
 				$dbh=new PDO("mysql:host=".SAE_MYSQL_HOST_M.';dbname='.SAE_MYSQL_DB, SAE_MYSQL_USER, SAE_MYSQL_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8"));
 			}else{
-$test="2";
 				$dbh=new PDO("mysql:host=".$DB_HOST.';dbname='.$DB_NAME, $DB_USER, $DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf8"));
 			}
 			
@@ -35,7 +33,7 @@ $test="2";
 	    return $result;
     }catch(PDOException $e){
 	if(stristr($e->getMessage(),"Access denied")) 
-		$view_errors=$DB_HOST."".$test."".$DB_NAME."".$DB_USER."".$DB_PASS.""."Database account/password fail, check db_info.inc.php<br>\n数据库账户密码错误，请检查配置文件db_info.inc.php";
+		$view_errors="Database account/password fail, check db_info.inc.php<br>\n数据库账户密码错误，请检查配置文件db_info.inc.php";
 	else
 		$view_errors="SQL error,check your sql and /var/log/nginx/error.log !";
 	require("template/".$OJ_TEMPLATE."/error.php");

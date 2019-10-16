@@ -6,10 +6,10 @@
 //for people using hustoj out of China , be careful of the last two line of this file !
 
 // connect db 
-static 	$DB_HOST="127.0.0.1";  //数据库服务器ip或域名
+static 	$DB_HOST="localhost";  //数据库服务器ip或域名
 static 	$DB_NAME="jol";   //数据库名
-static 	$DB_USER="debian-sys-maint";  //数据库账户
-static 	$DB_PASS="123";  //数据库密码
+static 	$DB_USER="root";  //数据库账户
+static 	$DB_PASS="root";  //数据库密码
 
 static 	$OJ_NAME="HUSTOJ";  //左上角显示的系统名称
 static 	$OJ_HOME="./";    //主页目录
@@ -51,7 +51,7 @@ static  $OJ_REGISTER=true; //允许注册新用户
 static  $OJ_REG_NEED_CONFIRM=false; //新注册用户需要审核
 static  $OJ_NEED_LOGIN=false; //需要登录才能访问
 static  $OJ_RANK_LOCK_PERCENT=0; //比赛封榜时间比例
-static  $OJ_SHOW_DIFF=true; //是否显示WA的对比说明
+static  $OJ_SHOW_DIFF=false; //是否显示WA的对比说明
 static  $OJ_TEST_RUN=false; //提交界面是否允许测试运行
 static  $OJ_BLOCKLY=false; //是否启用Blockly界面
 static  $OJ_ENCODE_SUBMIT=false; //是否启用base64编码提交的功能，用来回避WAF防火墙误拦截。
